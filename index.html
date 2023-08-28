@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Innovatech Store</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="mision_vision.html">Misión y Visión</a></li>
+                <li><a href="contactenos.html">Contáctenos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Bienvenido a Nuestra Tienda en Línea Innovatech Store</h1>
+        <p>Explora nuestra amplia selección de productos de alta calidad.</p>
+        
+        <section class="products">
+            <article class="product">
+                <img src="laptophp.jpg" alt="Producto 1">
+                <h2>Laptop HP Ryzen 3, 8GB RAM, 256GB SSD, 15.6" W 11</h2>
+                <p>Laptop HP Ryzen 3, 8GB RAM, 256GB SSD, 15.6" W 11</p>
+                <span class="price">Q2,500</span>
+                <button id="addToCartBtn1">Agregar al carrito</button>
+            </article>
+            
+            <article class="product">
+                <img src="laptopdell.jpg" alt="Producto 2">
+                <h2>Laptop Dell 14" Vostr3400 Core i3 de 8GB Ram 256GB SSD</h2>
+                <p>Laptop Dell 14" Vostr3400 Core i3 de 8GB Ram 256GB SSD. Laptop Dell Vostro 3400 14pulg. SPA i3-1115G4 8GB 256GB W11H</p>
+                <span class="price">Q3,900</span>
+                <button id="addToCartBtn2">Agregar al carrito</button>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p>Derechos Reservados &copy; 2023 | Nuestra Tienda en Línea</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('addToCartBtn1').addEventListener('click', () => {
+                addToCart("Laptop HP Ryzen 3", 2500);
+            });
+
+            document.getElementById('addToCartBtn2').addEventListener('click', () => {
+                addToCart("Laptop Dell 14\" Vostr3400", 3900);
+            });
+        });
+
+        function addToCart(productName, price) {
+    // Declaración e inicialización de la variable cart
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Agregar el producto al carrito
+    cart.push({ name: productName, price: price });
+    
+    // Actualizar el carrito en el Local Storage
+    localStorage.setItem('cart', JSON.stringify(cart));
+            
+    // Mostrar mensaje
+    showMessage("Producto agregado al carrito: " + productName);
+}
+
+
+        function showMessage(message) {
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            messageElement.classList.add('message');
+            document.body.appendChild(messageElement);
+            setTimeout(() => {
+                document.body.removeChild(messageElement);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
